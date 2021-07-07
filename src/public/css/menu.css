@@ -11,8 +11,9 @@ body {
 
 nav {
   background-color: rgb(175, 171, 171);
-  width: 30%;
+  width: 300px;
 }
+
 .content {
   width: 100%;
 }
@@ -20,17 +21,18 @@ nav {
 .nav__link {
   color: #303440;
   display: block;
-  padding: 15px 0;
+  padding: 20px 0;
   text-decoration: none;
 }
 
 .nav__link--inside {
   border-radius: 6px;
-  padding-left: 10px;
+  padding-left: 15px;
+  transition: background-color 0.5s;
 }
 
 .nav__link--inside:hover {
-  background-color: #f6f8fa;
+  background-color: #eee;
 }
 
 .list {
@@ -72,7 +74,6 @@ nav {
 
 .list__show {
   width: 80%;
-  margin-left: auto;
   border-left: 2px solid #303440;
   list-style: none;
   transition: height 0.4s;
