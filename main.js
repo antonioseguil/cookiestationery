@@ -1,5 +1,4 @@
-const { app, BrowserWindow } = require("electron");
-const path = require("path");
+const { app, BrowserWindow, Menu } = require("electron");
 
 function main() {
   let mainWindow = new BrowserWindow({
@@ -7,9 +6,27 @@ function main() {
     height: 600,
   });
 
-  mainWindow.loadFile("index.html");
+  mainWindow.loadFile("./src/view/index.html");
 }
+
+/* function getMenu() {
+  return [
+    {
+      label: "File",
+      submenu: [
+        {
+          label: "new producto",
+          accelerator: "Ctrl + N",
+          click() {
+            alert("click a new producto");
+          },
+        },
+      ],
+    },
+  ];
+} */
 
 app.whenReady().then(() => {
   main();
+  Menu.setApplicationMenu(null);
 });
