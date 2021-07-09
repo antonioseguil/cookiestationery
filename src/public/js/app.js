@@ -1,16 +1,19 @@
+import * as product from "./../../app/controller/ProductController.js";
 let app = angular.module("app", ["ngRoute"]);
 
 /* router en angular */
 app.config(($routeProvider) => {
-  $routeProvider.when("/producto/list", {
+  $routeProvider.when("/producto", {
     templateUrl: "./../view/pages/products/index.html",
-    controller: "",
+    controller: "productController",
   });
 });
 
 app.controller("mainController", [
   "$scope",
-  ($scope) => {
-    $scope.title = "prueba";
+  function ($scope) {
+    $scope.title = "Cookie";
   },
 ]);
+
+app.controller(product.nameController, product.controller);

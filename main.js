@@ -28,5 +28,5 @@ function main() {
 
 app.whenReady().then(() => {
   main();
-  Menu.setApplicationMenu(null);
+  /* Menu.setApplicationMenu(null); */
 });

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" ng-app="app" ng-controller="mainController">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -17,47 +17,50 @@
     <script src="./../public/js/menu.js"></script>
     <script src="./../public/js/angular.min.js"></script>
     <script src="./../public/js/angular-route.min.js"></script>
-    <title>HOME</title>
+    <title>{{title}}</title>
   </head>
-  <body ng-app="app">
+  <body>
     <nav class="nav">
       <ul class="list">
+        <!-- OPCIONES DE LA LISTA -->
+
         <li class="list__item">
           <div class="list__button">
             <img src="./../public/asset/home.svg" alt="" class="list__img" />
-            <a href="#!/producto/list" class="nav__link">Inicio</a>
+            <a href="#!/" class="nav__link">Inicio</a>
+          </div>
+        </li>
+
+        <li class="list__item">
+          <div class="list__button">
+            <img src="./../public/asset/user.svg" alt="" class="list__img" />
+            <a href="#!/usuarios" class="nav__link">Clientes</a>
           </div>
         </li>
 
         <li class="list__item list__item--click">
           <div class="list__button list__button--click">
             <img src="./../public/asset/paper.svg" alt="" class="list__img" />
-            <a href="#" class="nav__link">Productos</a>
+            <a class="nav__link">Productos</a>
             <img src="./../public/asset/arrow.svg" alt="" class="list__arrow" />
           </div>
 
           <ul class="list__show">
             <li class="list__inside">
-              <a href="#" class="nav__link nav__link--inside"
+              <a href="#!/producto" class="nav__link nav__link--inside"
                 >Agregar producto</a
               >
-              <a href="#" class="nav__link nav__link--inside">Compras</a>
-              <a href="#" class="nav__link nav__link--inside">Ventas</a>
+              <a href="#!/compras" class="nav__link nav__link--inside"
+                >Compras</a
+              >
+              <a href="#!/ventas" class="nav__link nav__link--inside">Ventas</a>
             </li>
           </ul>
         </li>
       </ul>
     </nav>
 
-    <div class="content p-5" ng-controller="mainController">
-      <div>
-        <label for="">Prueba de titulo</label>
-        <input type="text" class="input-form" ng-model="title" />
-      </div>
-      <h1>{{title}}</h1>
-
-      <div ng-view></div>
-    </div>
-    <script src="./../public/js/app.js"></script>
+    <div class="content p-5" ng-view></div>
+    <script src="./../public/js/app.js" type="module"></script>
   </body>
 </html>

@@ -2,7 +2,6 @@
 window.onload = () => {
   let listElements = document.querySelectorAll(".list__button--click");
 
-  console.log(listElements);
   listElements.forEach((listElement) => {
     listElement.addEventListener("click", () => {
       listElement.classList.toggle("arrow");
