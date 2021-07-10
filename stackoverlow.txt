@@ -1,0 +1,3 @@
+Cosas que salvan vidas:
+https://stackoverflow.com/questions/46384591/node-was-compiled-against-a-different-node-js-version-using-node-module-versio/52796884#52796884
+https://github.com/electron/electron-rebuild

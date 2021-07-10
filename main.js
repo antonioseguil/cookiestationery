@@ -1,4 +1,5 @@
 const { app, BrowserWindow, Menu } = require("electron");
+const process = require("./src/app/process/MainProcess");
 
 function main() {
   let mainWindow = new BrowserWindow({
@@ -6,6 +7,7 @@ function main() {
     height: 600,
     webPreferences: {
       nodeIntegration: true,
+      contextIsolation: false,
     },
   });
 
@@ -31,5 +33,6 @@ function main() {
 
 app.whenReady().then(() => {
   main();
-  Menu.setApplicationMenu(null);
+  process.allMainProcess();
+  /* Menu.setApplicationMenu(null); */
 });
