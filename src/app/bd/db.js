@@ -3,6 +3,4 @@ const db = new Database("./cookie.sqlite", {
   verbose: console.log,
 });
 
-module.exports = {
-  db,
-};
+module.exports = db;

@@ -1,5 +1,8 @@
-class Persona {
+const Helper = require("./helpers.js");
+
+class Persona extends Helper {
   constructor(obj, id = 0) {
+    super();
     this.id = id;
     this.nombre = obj.nombre;
     this.apellido_paterno = obj.apellido_paterno;
@@ -9,3 +12,5 @@ class Persona {
     this.direccion = obj.direccion;
   }
 }
+
+module.exports = Persona;

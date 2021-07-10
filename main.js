@@ -4,6 +4,9 @@ function main() {
   let mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    webPreferences: {
+      nodeIntegration: true,
+    },
   });
 
   mainWindow.loadFile("./src/view/index.html");
@@ -28,5 +31,5 @@ function main() {
 
 app.whenReady().then(() => {
   main();
-  /* Menu.setApplicationMenu(null); */
+  Menu.setApplicationMenu(null);
 });
