@@ -29,8 +29,22 @@ class Helper {
     });
     /* Completando la cadena */
     let query = `INSERT INTO ${table} ${columns} VALUES ${values}`;
-    console.log("query:", query);
+    /* Retornando datos */
     return query;
+  }
+
+  queryAll(table) {
+    let query = `SELECT * FROM ${table}`;
+    return query;
+  }
+
+  queryFindById(table) {
+    let query = `SELECT * FROM ${table} WHERE id = ${this.id}`;
+    return query;
+  }
+
+  queryFindByColumn(table, column, value) {
+    let query = `SELECT * FROM ${table} WHERE ${column} = ${value}`;
   }
 }
 

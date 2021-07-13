@@ -1,29 +1,153 @@
-<div>
-  <p class="h1 text-center">{{title}}</p>
-  <div>{{data}}</div>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Nombre y Apellidos</th>
-        <th>DNI</th>
-        <th>Celular</th>
-        <th>Dirección</th>
-        <th>Opciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>prueba</td>
-        <td>prueba</td>
-        <td>prueba</td>
-        <td>prueba</td>
-        <td>prueba</td>
-        <td>
-          <button class="btn btn-secondary btn-sm">Actualizar</button>
-          <button class="btn btn-danger btn-sm">Borrar</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <p class="h1 text-center">{{title}}</p>
+      <hr />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="offset-10 col-2">
+      <button class="btn btn-success btn-sm">Nuevo cliente</button>
+    </div>
+  </div>
+
+  <form class="my-3 border p-4" ng-submit="addCliente()">
+    <fieldset>
+      <legend>Agregar nuevo cliente</legend>
+
+      <div class="row">
+        <div class="col-4">
+          <label for="txtNombre">Nombres:</label>
+          <input
+            class="form-control"
+            type="text"
+            id="txtNombre"
+            placeholder="Nombres"
+            ng-model="cliente.nombre"
+            required
+          />
+        </div>
+
+        <div class="col">
+          <label for="txtApellidoPat">Apellido Paterno:</label>
+          <input
+            type="text"
+            id="txtApellidoPat"
+            placeholder="Apellido Paterno"
+            class="form-control"
+            ng-model="cliente.apellido_paterno"
+            required
+          />
+        </div>
+
+        <div class="col">
+          <label for="">Apellido Materno:</label>
+          <input
+            type="text"
+            id="txtApellidoMat"
+            placeholder="Apellido Materno"
+            class="form-control"
+            ng-model="cliente.apellido_materno"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-4">
+          <label for="txtDni">DNI:</label>
+          <input
+            type="text"
+            id="txtDni"
+            class="form-control"
+            placeholder="Ingrese su DNI"
+            ng-model="cliente.dni"
+            required
+          />
+        </div>
+
+        <div class="col-4">
+          <label for="txtCelular">Celular:</label>
+          <input
+            type="text"
+            id="txtCelular"
+            class="form-control"
+            placeholder="Ingrese su celular"
+            ng-model="cliente.celular"
+            required
+          />
+        </div>
+
+        <div class="col-4">
+          <label for="txtDireccion">Dirección:</label>
+          <input
+            type="text"
+            id="txtDireccion"
+            class="form-control"
+            placeholder="Ingrese su dirección"
+            ng-model="cliente.direccion"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-12">
+          <button type="reset" class="btn btn-danger" ng-click="toast()">
+            Cancelar
+          </button>
+          <button type="submit" class="btn btn-success">Guardar</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+  <div class="row">
+    <table class="table table-hover">
+      <thead class="text-center">
+        <tr>
+          <th>ID</th>
+          <th>Nombre y Apellidos</th>
+          <th>DNI</th>
+          <th>Celular</th>
+          <th>Dirección</th>
+          <th>Opciones</th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+        <tr ng-repeat="(key, obj) in data">
+          <td>{{obj.id}}</td>
+          <td>
+            {{obj.nombre}} {{obj.apellido_paterno}} {{obj.apellido_materno}}
+          </td>
+          <td>{{obj.dni}}</td>
+          <td>{{obj.celular}}</td>
+          <td>{{obj.direccion}}</td>
+          <td>
+            <button class="btn btn-secondary btn-sm">Actualizar</button>
+            <button class="btn btn-danger btn-sm">Borrar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div
+    class="toast align-items-center text-white bg-primary border-0"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+    id="toast"
+  >
+    <div class="d-flex">
+      <div class="toast-body">Hello, world! This is a toast message.</div>
+      <button
+        type="button"
+        class="btn-close btn-close-white me-2 m-auto"
+        data-bs-dismiss="toast"
+        aria-label="Close"
+      ></button>
+    </div>
+  </div>
 </div>

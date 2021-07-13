@@ -11,8 +11,9 @@ function add(obj) {
   /* Entregando datos al modelo */
   const persona = new Persona(obj);
   /* Ejecutando query */
-  console.log(persona.json());
-  db.prepare(persona.queryAdd("persona")).run(persona.json());
+  const result = db.prepare(persona.queryAdd("persona")).run(persona.json());
+  persona.id = result.lastInsertRowid;
+  return persona;
 }
 
 module.exports = {
