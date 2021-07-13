@@ -19,6 +19,7 @@
     "electron-rebuild": "^2.3.5"
   },
   "dependencies": {
-    "better-sqlite3": "^7.4.1"
+    "better-sqlite3": "^7.4.1",
+    "sweetalert2": "^11.0.18"
   }
 }
