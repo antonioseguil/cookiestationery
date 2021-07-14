@@ -9,8 +9,12 @@ const controller = [
     $scope.data = ipcRenderer.sendSync("findAllClient", "");
     /* Titulo de la vista */
     $scope.title = "Lista de clientes";
+    /* Variable para habilitar la vista */
+    $scope.viewAdd = false;
     /* Objeto cliente */
-    $scope.cliente = {};
+    $scope.cliente = {
+      id: 0,
+    };
 
     /* Eventos para agregar nuevo cliente*/
     $scope.addCliente = function () {
@@ -18,9 +22,9 @@ const controller = [
       let data = $scope.cliente;
       /* Enviando al proceso principal */
       const newCliente = ipcRenderer.sendSync("addClient", data);
-      console.log(newCliente);
       /* Agregando nuevo valor al array */
-      $scope.data.push(newCliente);
+      data.id == 0 ? $scope.data.push(newCliente) : "";
+      console.log(data.id);
       /* Limpiando inputs */
       $scope.clean();
       /* Enviando alerta */
@@ -37,18 +41,25 @@ const controller = [
       });
 
       Toast.fire({
-        icon: "Cliente Guardado.",
-        title: "¡El cliente fue guardado con exito!",
+        icon: "success",
+        title: "Signed in successfully",
       });
+    };
+
+    $scope.updateCliente = function (oldObj) {
+      /* Se entrega el modelo que se desea actualizar */
+      $scope.cliente = oldObj;
+      /* Se habilita la vista para editar */
+      $scope.viewAdd = true;
     };
 
     /* helpers */
     $scope.clean = function () {
-      $scope.cliente = {};
-    };
-
-    $scope.toast = function () {
-      //toast.show();
+      $scope.cliente = {
+        id: 0,
+      };
+      /* Se ocultara la vista para editar */
+      $scope.viewAdd = false;
     };
   },
 ];

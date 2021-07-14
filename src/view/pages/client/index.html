@@ -6,17 +6,25 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row p-2">
     <div class="offset-10 col-2">
-      <button class="btn btn-success btn-sm">Nuevo cliente</button>
+      <button
+        class="btn btn-success btn-sm"
+        ng-show="!viewAdd"
+        ng-click="viewAdd = true"
+      >
+        Nuevo cliente
+      </button>
     </div>
   </div>
 
-  <form class="my-3 border p-4" ng-submit="addCliente()">
+  <form class="my-3 border p-4" ng-submit="addCliente()" ng-show="viewAdd">
     <fieldset>
       <legend>Agregar nuevo cliente</legend>
 
       <div class="row">
+        <input type="hidden" ng-model="cliente.id" />
+
         <div class="col-4">
           <label for="txtNombre">Nombres:</label>
           <input
@@ -29,7 +37,7 @@
           />
         </div>
 
-        <div class="col">
+        <div class="col-4">
           <label for="txtApellidoPat">Apellido Paterno:</label>
           <input
             type="text"
@@ -41,7 +49,7 @@
           />
         </div>
 
-        <div class="col">
+        <div class="col-4">
           <label for="">Apellido Materno:</label>
           <input
             type="text"
@@ -94,7 +102,11 @@
 
       <div class="row mt-4">
         <div class="col-12">
-          <button type="reset" class="btn btn-danger" ng-click="toast()">
+          <button
+            type="reset"
+            class="btn btn-danger"
+            ng-click="viewAdd = false"
+          >
             Cancelar
           </button>
           <button type="submit" class="btn btn-success">Guardar</button>
@@ -125,29 +137,13 @@
           <td>{{obj.celular}}</td>
           <td>{{obj.direccion}}</td>
           <td>
-            <button class="btn btn-secondary btn-sm">Actualizar</button>
+            <button class="btn btn-info btn-sm" ng-click="updateCliente(obj)">
+              Actualizar
+            </button>
             <button class="btn btn-danger btn-sm">Borrar</button>
           </td>
         </tr>
       </tbody>
     </table>
-  </div>
-
-  <div
-    class="toast align-items-center text-white bg-primary border-0"
-    role="alert"
-    aria-live="assertive"
-    aria-atomic="true"
-    id="toast"
-  >
-    <div class="d-flex">
-      <div class="toast-body">Hello, world! This is a toast message.</div>
-      <button
-        type="button"
-        class="btn-close btn-close-white me-2 m-auto"
-        data-bs-dismiss="toast"
-        aria-label="Close"
-      ></button>
-    </div>
   </div>
 </div>

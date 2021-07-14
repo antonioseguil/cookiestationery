@@ -8,8 +8,7 @@ function processClient() {
   });
 
   ipcMain.on("addClient", (event, args) => {
-    console.log(args);
-    const newClient = person.add(args);
+    const newClient = person.addOrUpdate(args);
     event.returnValue = newClient;
   });
 }
