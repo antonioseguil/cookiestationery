@@ -7,7 +7,7 @@ function findAll() {
   return data;
 }
 
-/* Agregando una nueva persona */
+/* Agregando o actualizando una nueva persona una nueva persona */
 function addOrUpdate(obj) {
   /* Entregando datos al modelo */
   const persona = new Persona(obj, obj.id);
@@ -21,7 +21,16 @@ function addOrUpdate(obj) {
   return persona;
 }
 
+/* Eliminando un dato de la base de dato */
+function deleting(id) {
+  /* Llamando a la funcion para eliminar */
+  const result = db.prepare(Persona.queryDelete("persona", id)).run();
+  /* enviando resultado */
+  return result.changes;
+}
+
 module.exports = {
   findAll,
   addOrUpdate,
+  deleting,
 };

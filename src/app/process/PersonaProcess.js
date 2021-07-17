@@ -11,6 +11,11 @@ function processClient() {
     const newClient = person.addOrUpdate(args);
     event.returnValue = newClient;
   });
+
+  ipcMain.on("deletingClient", (event, args) => {
+    const change = person.deleting(args);
+    event.returnValue = change;
+  });
 }
 
 module.exports = {

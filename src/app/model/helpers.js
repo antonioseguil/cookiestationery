@@ -66,6 +66,12 @@ class Helper {
     return query;
   }
 
+  /* Query para borrar */
+  static queryDelete(table, id) {
+    let query = `delete from ${table} where id=${id}`;
+    return query;
+  }
+
   static queryAll(table) {
     let query = `SELECT * FROM ${table}`;
     return query;
@@ -76,7 +82,7 @@ class Helper {
     return query;
   }
 
-  queryFindByColumn(table, column, value) {
+  static queryFindByColumn(table, column, value) {
     let query = `SELECT * FROM ${table} WHERE ${column} = ${value}`;
   }
 }

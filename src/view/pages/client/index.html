@@ -18,11 +18,26 @@
     </div>
   </div>
 
-  <form class="my-3 border p-4" ng-submit="addCliente()" ng-show="viewAdd">
+  <form
+    class="my-3 border p-4"
+    ng-submit="addCliente()"
+    ng-show="viewAdd"
+    name="formCliente"
+  >
     <fieldset>
-      <legend>Agregar nuevo cliente</legend>
-
+      <legend>Datos del cliente</legend>
       <div class="row">
+        <div class="col-12">
+          <div
+            class="alert alert-warning"
+            role="alert"
+            ng-show="formCliente.$invalid && formCliente.$dirty"
+          >
+            Llene los datos requeridos por favor.
+          </div>
+        </div>
+      </div>
+      <div class="row mt-4">
         <input type="hidden" ng-model="cliente.id" />
 
         <div class="col-4">
@@ -116,34 +131,46 @@
   </form>
 
   <div class="row">
-    <table class="table table-hover">
-      <thead class="text-center">
-        <tr>
-          <th>ID</th>
-          <th>Nombre y Apellidos</th>
-          <th>DNI</th>
-          <th>Celular</th>
-          <th>Dirección</th>
-          <th>Opciones</th>
-        </tr>
-      </thead>
-      <tbody class="text-center">
-        <tr ng-repeat="(key, obj) in data">
-          <td>{{obj.id}}</td>
-          <td>
-            {{obj.nombre}} {{obj.apellido_paterno}} {{obj.apellido_materno}}
-          </td>
-          <td>{{obj.dni}}</td>
-          <td>{{obj.celular}}</td>
-          <td>{{obj.direccion}}</td>
-          <td>
-            <button class="btn btn-info btn-sm" ng-click="updateCliente(obj)">
-              Actualizar
-            </button>
-            <button class="btn btn-danger btn-sm">Borrar</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="col-12 mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Busqueda por DNI o Nombre del cliente"
+        ng-model="search"
+      />
+    </div>
+    <div class="col-12">
+      <table class="table table-hover">
+        <thead class="text-center">
+          <tr>
+            <th>ID</th>
+            <th>Nombre y Apellidos</th>
+            <th>DNI</th>
+            <th>Celular</th>
+            <th>Dirección</th>
+            <th>Opciones</th>
+          </tr>
+        </thead>
+        <tbody class="text-center">
+          <tr ng-repeat="(key, obj) in data | filter:search">
+            <td>{{obj.id}}</td>
+            <td>
+              {{obj.nombre}} {{obj.apellido_paterno}} {{obj.apellido_materno}}
+            </td>
+            <td>{{obj.dni}}</td>
+            <td>{{obj.celular}}</td>
+            <td>{{obj.direccion}}</td>
+            <td>
+              <button class="btn btn-info btn-sm" ng-click="updateCliente(obj)">
+                Actualizar
+              </button>
+              <button class="btn btn-danger btn-sm" ng-click="delete(obj.id)">
+                Borrar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
